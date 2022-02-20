@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--核心配置文件-->
+<mapper namespace="cn.xiejp.dao.UserMapper">
+    <insert id="add" parameterType="cn.xiejp.pojo.User">
+        insert into test.user(age,name,username,mobile,password,email,sex)
+        value (#{age},#{name},#{username},#{mobile},#{password},#{email},#{sex})
+    </insert>
+
+    <delete id="delete" parameterType="String">
+        delete from test.user where mobile=#{mobile}
+    </delete>
+
+    <update id="update" parameterType="cn.xiejp.pojo.User">
+        update test.user
+        set age=#{age},name=#{name},username#{username},password=#{password},email=#{email},sex=#{sex}
+        where mobile=#{mobile};
+    </update>
+
+    <select id="select" parameterType="String" resultType="cn.xiejp.pojo.User">
+        select *
+        from test.user
+        where mobile=#{mobile};
+    </select>
+
+    <select id="selectAll" parameterType="cn.xiejp.pojo.User" resultType="java.util.List">
+        select *
+        from test.user;
+    </select>
+</mapper>
